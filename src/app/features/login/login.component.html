@@ -1,0 +1,26 @@
+<article class="login">
+  <h1>Iniciar sesión</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error *ngIf="email.invalid">Ingrese un email válido</mat-error>
+        <mat-icon matSuffix>perm_identity</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" />
+        <mat-error *ngIf="password.invalid">Ingrese una contraseña válida</mat-error>
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="flex justify-center">
+      <button mat-stroked-button color="primary" [disabled]="!loginForm.valid" type="submit">Login</button>
+    </div>
+  </form>
+</article>

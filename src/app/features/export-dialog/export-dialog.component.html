@@ -1,0 +1,19 @@
+<mat-card>
+  <article class="login">
+    <h1>Envío de Correo</h1>
+
+    <form [formGroup]="exportForm" (ngSubmit)="submit()">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Ingrese un correo</mat-label>
+          <input matInput formControlName="email" />
+          <mat-error *ngIf="email.invalid">Ingrese un correo válido</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="flex justify-center">
+        <button mat-stroked-button color="primary" type="submit">Enviar</button>
+      </div>
+    </form>
+  </article>
+
+</mat-card>

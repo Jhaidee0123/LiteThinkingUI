@@ -1,0 +1,34 @@
+<mat-card *ngFor="let company of companies" class="example-card">
+  <mat-card-subtitle>{{ company.address }}</mat-card-subtitle>
+  <mat-card-title>{{ company.name }}</mat-card-title>
+  <mat-divider inset></mat-divider>
+  <mat-card-content>
+    <p>{{ company.inventory.name }}</p>
+    <p>{{ company.inventory.description }}</p>
+  </mat-card-content>
+  <div class="demo-button-container">
+    <button mat-raised-button *ngIf="userRole === 'Admin'" (click)="addArticle(company.inventory.id)" class="add-article-button">
+      Crear artículo
+    </button>
+    <button mat-raised-button (click)="exportToPdf(company.inventory.id)" class="add-article-button">
+      Exportar PDF
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="company.inventory.articles" class="mat-elevation-z8 table">
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let item">{{item.name}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let item">{{item.quantity}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

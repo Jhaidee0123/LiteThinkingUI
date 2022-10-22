@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <a routerLink="/" class="brand">Lite Thinking</a>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button routerLink="/login" *ngIf="!(isAuthenticated$ | async)">
+        Login
+      </a>
+      <a mat-button routerLink="/register-company" *ngIf="(isAuthenticated$ | async) && (adminAuthenticated$ | async)"> Crear Compañia </a>
+      <a mat-button routerLink="/companies" *ngIf="(isAuthenticated$ | async)"> Compañias </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/login" *ngIf="!(isAuthenticated$ | async)">
+        Login
+      </a>
+      <a mat-list-item (click)="logout()" *ngIf="isAuthenticated$ | async">
+        Cerrar sesión
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh">
+      <ng-content> </ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Crear articulo</h1>
+<div mat-dialog-content>
+  <form [formGroup]="articleForm">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre articulo</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Cantidad</mat-label>
+        <input matInput formControlName="quantity" />
+      </mat-form-field>
+    </div>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="submit()">Crear</button>
+</div>
