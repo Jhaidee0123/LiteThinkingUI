@@ -7,6 +7,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { RegisterCompanyComponent } from './companies/register-company/register-company.component';
 import { CreateArticleDialogComponent } from './articles/create-article-dialog/create-article-dialog.component';
 import { ExportDialogComponent } from './export-dialog/export-dialog.component';
+import { EditCompanyDialogComponent } from './companies/edit-company-dialog/edit-company-dialog.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ExportDialogComponent } from './export-dialog/export-dialog.component';
     CompaniesComponent,
     RegisterCompanyComponent,
     CreateArticleDialogComponent,
-    ExportDialogComponent
+    ExportDialogComponent,
+    EditCompanyDialogComponent
   ],
   imports: [
     CommonModule,

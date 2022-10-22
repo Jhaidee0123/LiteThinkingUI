@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Company } from '../models/company.model';
 import { CreateCompany } from '../models/create-company.model';
+import { EditCompany } from '../models/update-company.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,19 @@ export class CompanyService {
     return this.httpClient.post(
       `${this.baseApi}/companies/create-company`,
       company
+    );
+  }
+
+  public updateCompany(company: EditCompany): Observable<Company[]> {
+    return this.httpClient.put<Company[]>(
+      `${this.baseApi}/companies/edit-company`,
+      company
+    );
+  }
+
+  public removeCompany(companyId: string): Observable<any> {
+    return this.httpClient.delete(
+      `${this.baseApi}/companies/remove-company/${companyId}`
     );
   }
 

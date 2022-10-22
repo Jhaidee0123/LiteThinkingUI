@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Actualizar compañia</h1>
+<div mat-dialog-content>
+  <form [formGroup]="companyForm">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre compañia</mat-label>
+        <input matInput formControlName="name"/>
+        <mat-error *ngIf="name.invalid">Ingrese un nombre</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="address"/>
+        <mat-error *ngIf="address.invalid">Ingrese una dirección</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>NIT</mat-label>
+        <input matInput formControlName="nit" />
+        <mat-error *ngIf="nit.invalid">Ingrese un NIT</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="phone" />
+        <mat-error *ngIf="phone.invalid">Ingrese un teléfono</mat-error>
+      </mat-form-field>
+    </div>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="submit()">Actualizar</button>
+</div>
+

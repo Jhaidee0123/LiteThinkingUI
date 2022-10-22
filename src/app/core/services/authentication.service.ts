@@ -45,7 +45,6 @@ export class AuthenticationService {
         .subscribe();
     } else if (isAuthenticated) {
       this.isAuthenticated$.next(false);
-      console.log('ta')
     } else {
       this.isAuthenticated$.next(true);
     }

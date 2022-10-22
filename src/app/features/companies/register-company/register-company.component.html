@@ -1,10 +1,10 @@
-<mat-card>
+<mat-card class="card">
   <article class="login">
     <h1>Crear compañia</h1>
 
     <form [formGroup]="companyForm" (ngSubmit)="submit()">
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="field">
           <mat-label>Nombre compañia</mat-label>
           <input matInput formControlName="name" />
           <mat-error *ngIf="name.invalid">Ingrese un nombre</mat-error>
@@ -12,7 +12,7 @@
       </div>
 
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="field">
           <mat-label>Dirección</mat-label>
           <input matInput formControlName="address" />
           <mat-error *ngIf="address.invalid">Ingrese una dirección</mat-error>
@@ -20,7 +20,7 @@
       </div>
 
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="field">
           <mat-label>NIT</mat-label>
           <input matInput formControlName="nit" />
           <mat-error *ngIf="nit.invalid">Ingrese un NIT</mat-error>
@@ -28,16 +28,54 @@
       </div>
 
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="field">
           <mat-label>Teléfono</mat-label>
           <input matInput formControlName="phone" />
           <mat-error *ngIf="phone.invalid">Ingrese un teléfono</mat-error>
         </mat-form-field>
       </div>
       <div class="flex justify-center">
-        <button mat-stroked-button color="primary" type="submit">Crear</button>
+        <button mat-stroked-button color="primary" type="submit" class="field">Crear</button>
       </div>
     </form>
   </article>
 
 </mat-card>
+
+<table mat-table [dataSource]="companies" class="mat-elevation-z8 table">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let item">{{item.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef>Dirección</th>
+    <td mat-cell *matCellDef="let item">{{item.address}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="nit">
+    <th mat-header-cell *matHeaderCellDef>Nit</th>
+    <td mat-cell *matCellDef="let item">{{item.nit}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+    <td mat-cell *matCellDef="let item">{{item.phone}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let item">
+      <button mat-mini-fab color="primary" (click)="removeCompany(item.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" (click)="editCompany(item)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
