@@ -1,2 +1,2 @@
 # LiteThinkingUI
-LiteThinkingTest with UI
+LiteThinking UI
